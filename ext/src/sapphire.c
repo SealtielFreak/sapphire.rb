@@ -2,8 +2,13 @@
 
 #include <stdio.h>
 
-#include "SDL2/SDL.h"
 #include "ruby.h"
+
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL2_gfxPrimitives.h"
 
 #define SCREEN_WIDTH_SDL2   640
 #define SCREEN_HEIGHT_SDL2  480

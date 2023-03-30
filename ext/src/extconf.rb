@@ -5,7 +5,7 @@ CHECK_PACKAGE = Arguments.include? 'install-package'
 LIBS = {}
 MODE_COMPILE = if Arguments.include? 'static' and System.window? then :static_window else :generic end 
 
-$INCFLAGS << " -Iinclude/"
+$INCFLAGS << " -I../include/"
 
 puts $TARGET
 

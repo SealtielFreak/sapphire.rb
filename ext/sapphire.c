@@ -11,8 +11,6 @@
  * +self+:: the object the function is called on
  */
 VALUE rb_init_sdl2_test(VALUE self) {
-    int status = 0;
-
     if (SDL_WasInit(SDL_INIT_EVERYTHING) != 0) {
         printf("SDL2 was init everything\n");
         return Qtrue;

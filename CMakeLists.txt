@@ -8,30 +8,25 @@ FetchContent_Declare(SDL2
         GIT_TAG release-2.0.16
         )
 
-# Configurar SDL2_ttf
 FetchContent_Declare(SDL2_ttf
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_ttf.git
         GIT_TAG release-2.0.15
         )
 
-# Configurar SDL2_gfx
 FetchContent_Declare(SDL2_gfx
         URL http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-1.0.4.tar.gz
         )
 
-# Configurar SDL2_mixer
 FetchContent_Declare(SDL2_mixer
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer.git
         GIT_TAG release-2.0.4
         )
 
-# Configurar SDL2_net
 FetchContent_Declare(SDL2_net
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_net.git
         GIT_TAG release-2.0.1
         )
 
-# Configurar SDL2_image
 FetchContent_Declare(SDL2_image
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_image.git
         GIT_TAG release-2.0.5
@@ -41,7 +36,6 @@ FetchContent_Declare(Ruby
         URL https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.8.tar.gz
         )
 
-# Descargar SDL2 (solo las cabeceras)
 FetchContent_GetProperties(SDL2)
 if(NOT SDL2_POPULATED)
     FetchContent_Populate(SDL2)
@@ -49,7 +43,6 @@ if(NOT SDL2_POPULATED)
     target_include_directories(SDL2 INTERFACE ${sdl2_SOURCE_DIR}/include)
 endif()
 
-# Descargar SDL2_ttf (solo las cabeceras)
 FetchContent_GetProperties(SDL2_ttf)
 if(NOT SDL2_TTF_POPULATED)
     FetchContent_Populate(SDL2_ttf)
@@ -57,7 +50,6 @@ if(NOT SDL2_TTF_POPULATED)
     target_include_directories(SDL2_ttf INTERFACE ${sdl2_ttf_SOURCE_DIR}/include)
 endif()
 
-# Descargar SDL2_gfx (solo las cabeceras)
 FetchContent_GetProperties(SDL2_gfx)
 if(NOT SDL2_GFX_POPULATED)
     FetchContent_Populate(SDL2_gfx)
@@ -65,7 +57,6 @@ if(NOT SDL2_GFX_POPULATED)
     target_include_directories(SDL2_gfx INTERFACE ${sdl2_gfx_SOURCE_DIR})
 endif()
 
-# Descargar SDL2_mixer (solo las cabeceras)
 FetchContent_GetProperties(SDL2_mixer)
 if(NOT SDL2_MIXER_POPULATED)
     FetchContent_Populate(SDL2_mixer)
@@ -73,7 +64,6 @@ if(NOT SDL2_MIXER_POPULATED)
     target_include_directories(SDL2_mixer INTERFACE ${sdl2_mixer_SOURCE_DIR}/include)
 endif()
 
-# Descargar SDL2_net (solo las cabeceras)
 FetchContent_GetProperties(SDL2_net)
 if(NOT SDL2_NET_POPULATED)
     FetchContent_Populate(SDL2_net)
@@ -81,7 +71,6 @@ if(NOT SDL2_NET_POPULATED)
     target_include_directories(SDL2_net INTERFACE ${sdl2_net_SOURCE_DIR}/include)
 endif()
 
-# Descargar SDL2_net (solo las cabeceras)
 FetchContent_GetProperties(SDL2_image)
 if(NOT SDL2_IMAGE_POPULATED)
     FetchContent_Populate(SDL2_image)

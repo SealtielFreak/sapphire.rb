@@ -11,11 +11,13 @@ Gem::Specification.new do |s|
     s.email       = 'SealtielFreak@yandex.com'
     s.license     = 'LGPL-2.1'
 
-    s.required_ruby_version = '>= 2.5.0'
+    s.required_ruby_version = '>= 3.0.6'
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
     s.add_development_dependency 'rice', '~> 11.2', '>= 11.2.2'
 
-    s.files       = Dir.glob('ext/**/*.{h,c,rb,sh}') +
+    s.files       = Dir.glob('ext/**/*.{rb,sh}') +
+                    Dir.glob('ext/include/**/*.{h}') +
+                    Dir.glob('ext/src/*.{c}') +
 
                     Dir.glob('lib/**/*.{rb}') +
                     Dir.glob('bin/**/*.{rb}') +

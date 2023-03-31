@@ -33,7 +33,7 @@ FetchContent_Declare(SDL2_image
         )
 
 FetchContent_Declare(Ruby
-        URL https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.8.tar.gz
+        URL https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.6.tar.gz
         )
 
 FetchContent_GetProperties(SDL2)

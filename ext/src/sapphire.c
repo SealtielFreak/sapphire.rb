@@ -28,6 +28,11 @@ VALUE rb_init_sdl2_test(VALUE self) {
     return Qtrue;
 }
 
+/*
+ * This function is for run SDL2 testing in different modes.
+ * Params:
+ * +self+:: the object the function is called on
+ */
 VALUE rb_run_sdl2_test(VALUE self, VALUE rb_mode) {
     Check_Type(rb_mode, T_FIXNUM);
 

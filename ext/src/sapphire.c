@@ -1,14 +1,6 @@
-#include "sapphire.h"
-
 #include <stdio.h>
 
-#include "ruby.h"
-
-#include "SDL2/SDL.h"
-#include "SDL2/SDL_image.h"
-#include "SDL2/SDL_mixer.h"
-#include "SDL2/SDL_ttf.h"
-#include "SDL2/SDL2_gfxPrimitives.h"
+#include "sapphire.h"
 
 #define SCREEN_WIDTH_SDL2   640
 #define SCREEN_HEIGHT_SDL2  480
@@ -119,7 +111,7 @@ int run_sdl2_renderer() {
     }
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    
+
     while (status) {
         SDL_Event event;
 

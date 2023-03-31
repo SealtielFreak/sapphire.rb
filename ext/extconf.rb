@@ -4,9 +4,7 @@ require_relative 'auxlib.rb'
 LIBS = {}
 MODE_COMPILE = if Arguments.include? 'static' and System.window? then :static_window else :generic end 
 
-$INCFLAGS << " -I../include/"
-
-puts $TARGET
+$INCFLAGS << " -Iinclude/"
 
 LIBS[:static_window] = %w[
   SDL2
@@ -47,4 +45,4 @@ end
 
 LIBS[MODE_COMPILE].each { |l| have_library(l) }
 
-create_makefile 'ext'
+create_makefile 'ext', 'src'

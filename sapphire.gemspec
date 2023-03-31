@@ -15,8 +15,9 @@ Gem::Specification.new do |s|
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
     s.add_development_dependency 'rice', '~> 11.2', '>= 11.2.2'
 
-    s.files       = Dir.glob('ext/include/**/*.{h,c,rb,sh}') +
-                    Dir.glob('ext/src/*.{c,rb,sh}') +
+    s.files       = Dir.glob('ext/**/*.{rb,sh}') +
+                    Dir.glob('ext/include/**/*.{h}') +
+                    Dir.glob('ext/src/*.{c}') +
 
                     Dir.glob('lib/**/*.{rb}') +
                     Dir.glob('bin/**/*.{rb}') +
@@ -24,5 +25,5 @@ Gem::Specification.new do |s|
 
                     Dir.glob('assets/**/*.{otf}')
 
-    s.extensions  = ['ext/src/extconf.rb']
+    s.extensions  = ['ext/extconf.rb']
 end

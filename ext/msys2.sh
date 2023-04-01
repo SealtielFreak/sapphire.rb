@@ -1,17 +1,46 @@
-#!/usr/bin/sh
+#!/bin/bash
 
-curl -O https://repo.msys2.org/msys/x86_64/msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz;
-curl -O https://repo.msys2.org/msys/x86_64/msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz.sig;
-
-pacman-key --verify msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz.sig;
-pacman -U msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz;
-
-pacman -U --config <(echo) msys2-keyring-r21.b39fb11-1-any.pkg.tar.xz;
-
-pacman -Syy;
-
-if [ "$(uname -m)" = "x86_64" ]; then
-    pacman -Sy mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_gfx mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-SDL2_image --noconfirm;
+if [[ "$(echo $CC)" == *"clang"* ]]; then
+    echo "Default compiler: clang"
+    SDL2_PKG="mingw-w64-x86_64-clang-sdl2"
+    SDL2_IMAGE_PKG="mingw-w64-x86_64-clang-sdl2_image"
+    SDL2_MIXER_PKG="mingw-w64-x86_64-clang-sdl2_mixer"
+    SDL2_NET_PKG="mingw-w64-x86_64-clang-sdl2_net"
+    SDL2_TTF_PKG="mingw-w64-x86_64-clang-sdl2_ttf"
 else
-    pacman -Sy mingw-w64-i686-SDL2_ttf mingw-w64-i686-SDL2_gfx mingw-w64-i686-SDL2_mixer mingw-w64-i686-SDL2_image --noconfirm;
+    echo "Default compiler: mingw64"
+    SDL2_PKG="mingw-w64-x86_64-SDL2"
+    SDL2_IMAGE_PKG="mingw-w64-x86_64-SDL2_image"
+    SDL2_MIXER_PKG="mingw-w64-x86_64-SDL2_mixer"
+    SDL2_NET_PKG="mingw-w64-x86_64-SDL2_net"
+    SDL2_TTF_PKG="mingw-w64-x86_64-SDL2_ttf"
 fi
+
+pacman -Syu
+
+if ! pacman -Qs sdl2 > /dev/null; then
+  echo "SDL2 no found. Installing..."
+  pacman -S --needed $SDL2_PKG
+fi
+
+if ! pacman -Qs sdl2_image > /dev/null; then
+  echo "SDL2_image no found. Installing..."
+  pacman -S --needed $SDL2_IMAGE_PKG
+fi
+
+if ! pacman -Qs sdl2_mixer > /dev/null; then
+  echo "SDL2_mixer no found. Installing..."
+  pacman -S --needed $SDL2_MIXER_PKG
+fi
+
+if ! pacman -Qs sdl2_net > /dev/null; then
+  echo "SDL2_net no found. Installing..."
+  pacman -S --needed $SDL2_NET_PKG
+fi
+
+if ! pacman -Qs sdl2_ttf > /dev/null; then
+  echo "SDL2_ttf no found. Installing..."
+  pacman -S --needed $SDL2_TTF_PKG
+fi
+
+echo "SDL2 install finished"

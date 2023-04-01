@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pacman -Syy;
+
 if [[ "$(echo $CC)" == *"clang"* ]]; then
     echo "Default compiler: clang"
     SDL2_PKG="mingw-w64-x86_64-clang-sdl2"

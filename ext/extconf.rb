@@ -22,8 +22,6 @@ LIBS[:generic] = %w[
   SDL2_image
 ]
 
-puts 'Installing dependencies...'
-
 if System.windows?
   run_script 'msys2.sh'
 else
@@ -43,6 +41,6 @@ when :generic
   # something
 end
 
-LIBS[MODE_COMPILE].each { |l| have_library(l) }
+LIBS[MODE_COMPILE].each { |l| abort unless have_library(l) }
 
 create_makefile 'ext', 'src'

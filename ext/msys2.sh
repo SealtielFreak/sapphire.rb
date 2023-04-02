@@ -7,6 +7,7 @@ if which x86_64-pc-msys-gcc > /dev/null; then
   SDL2_MIXER_PKG="mingw-w64-x86_64-clang-sdl2_mixer"
   SDL2_NET_PKG="mingw-w64-x86_64-clang-sdl2_net"
   SDL2_TTF_PKG="mingw-w64-x86_64-clang-sdl2_ttf"
+  SDL2_GFX_PKG="mingw-w64-x86_64-clang-sdl2_gfx"
   INCLUDE_PATH="/usr/include"
 elif which x86_64-w64-mingw32-gcc > /dev/null; then
   echo "Default compiler: mingw64"
@@ -15,6 +16,7 @@ elif which x86_64-w64-mingw32-gcc > /dev/null; then
   SDL2_MIXER_PKG="mingw-w64-x86_64-SDL2_mixer"
   SDL2_NET_PKG="mingw-w64-x86_64-SDL2_net"
   SDL2_TTF_PKG="mingw-w64-x86_64-SDL2_ttf"
+  SDL2_GFX_PKG="mingw-w64-x86_64-SDL2_gfx"
   INCLUDE_PATH="/mingw64/include"
 else
   echo "Default compiler: no found"
@@ -55,6 +57,11 @@ fi
 if ! pacman -Qs sdl2_ttf > /dev/null; then
   echo "SDL2_ttf no found. Installing..."
   pacman -S --needed $SDL2_TTF_PKG --noconfirm;
+fi
+
+if ! pacman -Qs sdl2_gfx > /dev/null; then
+  echo "SDL2_gfx no found. Installing..."
+  pacman -S --needed $SDL2_GFX_PKG --noconfirm;
 fi
 
 echo "Checking SDL2..."

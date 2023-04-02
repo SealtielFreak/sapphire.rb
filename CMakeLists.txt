@@ -33,7 +33,7 @@ FetchContent_Declare(SDL2_image
         )
 
 FetchContent_Declare(Ruby
-        URL https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.6.tar.gz
+        URL https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.0.tar.gz
         )
 
 FetchContent_GetProperties(SDL2)
@@ -92,6 +92,7 @@ if (NOT Ruby_POPULATED)
     include_directories(${ruby_SOURCE_DIR}/include)
 endif ()
 
+add_compile_definitions(HAVE_STDARG_PROTOTYPES)
 add_compile_definitions(SAPPHIRE_C_DEVELOP)
 
 include_directories(ext/src)

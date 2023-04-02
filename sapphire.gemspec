@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
 
     s.required_ruby_version = '>= 3.0.6'
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
-    s.add_development_dependency 'rice', '~> 11.2', '>= 11.2.2'
 
     s.files       = Dir.glob('ext/**/*.{rb,sh}') +
                     Dir.glob('ext/include/**/*.{h}') +

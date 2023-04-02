@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
     s.email       = 'SealtielFreak@yandex.com'
     s.license     = 'LGPL-2.1'
 
-    s.required_ruby_version = '>= 2.7.0'
+    s.required_ruby_version = '>= 3.0'
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
 
     s.files       = Dir.glob('ext/**/*.{rb,sh}') +

@@ -1,9 +1,14 @@
+#include "ext.h"
+#include "exceptions.h"
+#include "klass/window.h"
+
 #include <stdio.h>
 
-#include "sapphire.h"
 
 #define SCREEN_WIDTH_SDL2   640
 #define SCREEN_HEIGHT_SDL2  480
+
+static VALUE rb_mExt;
 
 /*
  * This function is for SDL2 testing.
@@ -42,6 +47,11 @@ VALUE rb_run_sdl2_test(VALUE self, VALUE rb_mode) {
 void Init_ext(void) {
     rb_define_global_function("init_sdl2_test", rb_init_sdl2_test, 0);
     rb_define_global_function("run_sdl2_test", rb_run_sdl2_test, 1);
+
+    rb_mExt = rb_define_module("Sapphire");
+
+    Init_window_klass(rb_mExt);
+
 }
 
 int run_sdl2_surface() {

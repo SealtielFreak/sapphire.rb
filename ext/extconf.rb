@@ -21,7 +21,6 @@ else
   run_script 'linux.sh'
 end
 
-# $LIBS[$MODE_COMPILE].each { |l| abort "You need install #{l}!" unless have_library(l) }
 LIBS[MODE_COMPILE].each { |l| abort "You need install #{l}!" unless have_library(l) }
 
 create_makefile 'ext', 'src'

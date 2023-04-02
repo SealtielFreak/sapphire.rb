@@ -1,4 +1,4 @@
-require 'mkmf-rice'
+require 'mkmf'
 
 module System
   def System.name!

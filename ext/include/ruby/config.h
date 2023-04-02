@@ -1,9 +1,5 @@
 #ifndef INCLUDE_RUBY_CONFIG_H
-
-#ifdef SAPPHIRE_C_DEVELOP
-
 #define INCLUDE_RUBY_CONFIG_H 1
-
 /* confdefs.h */
 #define HAVE_STDIO_H 1
 #define HAVE_STDLIB_H 1
@@ -32,19 +28,16 @@
 #define __STDC_WANT_MATH_SPEC_FUNCS__ 1
 #define _TANDEM_SOURCE 1
 #define __EXTENSIONS__ 1
-#define RUBY_MSVCRT_VERSION 140
+#define RUBY_MSVCRT_VERSION 60
 #define RUBY_SYMBOL_EXPORT_BEGIN _Pragma("GCC visibility push(default)")
 #define RUBY_SYMBOL_EXPORT_END _Pragma("GCC visibility pop")
 #define HAVE_STMT_AND_DECL_IN_EXPR 1
-#define THREAD_IMPL_H "thread_win32.h"
-#define THREAD_IMPL_SRC "thread_win32.c"
 #define HAVE_TYPE_NET_LUID 1
 #define HAVE__GMTIME64_S 1
 #define HAVE__WFREOPEN_S 1
 #define HAVE_DIRENT_H 1
 #define HAVE__BOOL 1
 #define HAVE_STDBOOL_H 1
-#define HAVE_AFUNIX_H 1
 #define HAVE_DIRECT_H 1
 #define HAVE_FCNTL_H 1
 #define HAVE_FLOAT_H 1
@@ -55,12 +48,10 @@
 #define HAVE_PROCESS_H 1
 #define HAVE_SETJMPEX_H 1
 #define HAVE_STDALIGN_H 1
-#define HAVE_STDIO_H 1
 #define HAVE_SYS_FCNTL_H 1
 #define HAVE_SYS_FILE_H 1
 #define HAVE_SYS_UTIME_H 1
 #define HAVE_TIME_H 1
-#define HAVE_X86INTRIN_H 1
 #define HAVE_GMP_H 1
 #define HAVE_LIBGMP 1
 #define _FILE_OFFSET_BITS 64
@@ -134,13 +125,19 @@
 #define CLOCKID2NUM(v) INT2NUM(v)
 #define NUM2CLOCKID(v) NUM2INT(v)
 #define PRI_CLOCKID_PREFIX PRI_INT_PREFIX
+#define HAVE_PROTOTYPES 1
+#define TOKEN_PASTE(x,y) x##y
+#define STRINGIZE(expr) STRINGIZE0(expr)
+#define HAVE_STDARG_PROTOTYPES 1
 #define HAVE_VA_ARGS_MACRO 1
-#define HAVE__ALIGNOF 1
+#define RUBY_ALIGNAS(x) __declspec(aligned(x))
+#define RUBY_ALIGNOF alignof
 #define CONSTFUNC(x) __attribute__ ((__const__)) x
 #define PUREFUNC(x) __attribute__ ((__pure__)) x
 #define NORETURN(x) __attribute__ ((__noreturn__)) x
 #define DEPRECATED(x) __attribute__ ((__deprecated__)) x
-#define DEPRECATED_BY(n, x) __attribute__ ((__deprecated__("by "#n))) x
+#define DEPRECATED_BY(n,x) __attribute__ ((__deprecated__("by "#n))) x
+#define DEPRECATED_TYPE(mesg,x) __attribute__ ((__deprecated__ mesg)) x
 #define NOINLINE(x) __attribute__ ((__noinline__)) x
 #define ALWAYS_INLINE(x) __attribute__ ((__always_inline__)) x
 #define NO_SANITIZE(san, x) __attribute__ ((__no_sanitize__(san))) x
@@ -148,12 +145,11 @@
 #define NO_ADDRESS_SAFETY_ANALYSIS(x) __attribute__ ((__no_address_safety_analysis__)) x
 #define WARN_UNUSED_RESULT(x) __attribute__ ((__warn_unused_result__)) x
 #define MAYBE_UNUSED(x) __attribute__ ((__unused__)) x
-#define ERRORFUNC(mesg, x) __attribute__ ((__error__ mesg)) x
-#define WARNINGFUNC(mesg, x) __attribute__ ((__warning__ mesg)) x
+#define ERRORFUNC(mesg,x) __attribute__ ((__error__ mesg)) x
+#define WARNINGFUNC(mesg,x) __attribute__ ((__warning__ mesg)) x
 #define WEAK(x) __attribute__ ((__weak__)) x
 #define HAVE_FUNC_WEAK 1
 #define RUBY_CXX_DEPRECATED(msg) __attribute__((__deprecated__(msg)))
-#define HAVE_NULLPTR 1
 #define FUNC_STDCALL(x) __attribute__ ((__stdcall__)) x
 #define FUNC_CDECL(x) __attribute__ ((__cdecl__)) x
 #define FUNC_FASTCALL(x) __attribute__ ((__fastcall__)) x
@@ -164,23 +160,20 @@
 #define RUBY_ALIAS_FUNCTION_VOID(prot, name, args) RUBY_ALIAS_FUNCTION_TYPE(void, prot, name, args)
 #define HAVE_GCC_ATOMIC_BUILTINS 1
 #define HAVE_GCC_SYNC_BUILTINS 1
-#define HAVE___BUILTIN_UNREACHABLE 1
+#define UNREACHABLE __builtin_unreachable()
 #define RUBY_FUNC_EXPORTED __attribute__ ((__visibility__("default"))) extern
-#define RUBY_FUNC_NONNULL(n, x) __attribute__ ((__nonnull__(n))) x
+#define RUBY_FUNC_NONNULL(n,x) __attribute__ ((__nonnull__(n))) x
 #define RUBY_FUNCTION_NAME_STRING __func__
 #define ENUM_OVER_INT 1
 #define HAVE_DECL_SYS_NERR 1
 #define HAVE_DECL_GETENV 1
 #define SIZEOF_SIZE_T 8
 #define SIZEOF_PTRDIFF_T 8
-#define SIZEOF_DEV_T 4
 #define PRI_SIZE_PREFIX "z"
 #define PRI_PTRDIFF_PREFIX "t"
 #define HAVE_STRUCT_STAT_ST_RDEV 1
 #define SIZEOF_STRUCT_STAT_ST_SIZE SIZEOF_OFF_T
 #define SIZEOF_STRUCT_STAT_ST_INO 2
-#define SIZEOF_STRUCT_STAT_ST_DEV SIZEOF_DEV_T
-#define SIZEOF_STRUCT_STAT_ST_RDEV SIZEOF_DEV_T
 #define HAVE_STRUCT_TIMEVAL 1
 #define SIZEOF_STRUCT_TIMEVAL_TV_SEC SIZEOF_LONG
 #define TYPEOF_TIMEVAL_TV_SEC long
@@ -219,11 +212,11 @@
 #define uid_t int
 #define gid_t int
 #define GETGROUPS_T int
+#define RETSIGTYPE void
 #define HAVE_ALLOCA 1
-#define HAVE_DUP 1
-#define HAVE_DUP2 1
 #define HAVE_ACOSH 1
 #define HAVE_CBRT 1
+#define HAVE_DUP2 1
 #define HAVE_ERF 1
 #define HAVE_FLOCK 1
 #define HAVE_HYPOT 1
@@ -233,19 +226,17 @@
 #define HAVE_STRCHR 1
 #define HAVE_STRERROR 1
 #define HAVE_STRSTR 1
-#define HAVE_ISFINITE 1
+#define HAVE_FINITE 1
+#define HAVE_ISINF 1
+#define HAVE_ISNAN 1
 #define HAVE_SIGNBIT 1
 #define vfork fork
 #define HAVE_ATAN2L 1
 #define HAVE_ATAN2F 1
-#define HAVE_CHMOD 1
 #define HAVE_CHSIZE 1
 #define HAVE_CLOCK_GETTIME 1
 #define HAVE_COSH 1
-#define HAVE_EXECL 1
-#define HAVE_EXECLE 1
-#define HAVE_EXECV 1
-#define HAVE_EXECVE 1
+#define HAVE_DUP 1
 #define HAVE_FCNTL 1
 #define HAVE_FMOD 1
 #define HAVE_FSYNC 1
@@ -262,8 +253,6 @@
 #define HAVE_LSTAT 1
 #define HAVE_MBLEN 1
 #define HAVE_MKTIME 1
-#define HAVE_PCLOSE 1
-#define HAVE_POPEN 1
 #define HAVE_QSORT_S 1
 #define HAVE_READLINK 1
 #define HAVE_SEEKDIR 1
@@ -271,20 +260,53 @@
 #define HAVE_SINH 1
 #define HAVE_SPAWNV 1
 #define HAVE_SYMLINK 1
-#define HAVE_SYSTEM 1
 #define HAVE_TANH 1
 #define HAVE_TELLDIR 1
 #define HAVE_TIMES 1
 #define HAVE_TRUNCATE 1
 #define HAVE_TRUNCATE64 1
-#define HAVE_TZSET 1
-#define HAVE_UMASK 1
 #define HAVE_WAITPID 1
-
-#else
-
-#error "This header is only for development in C, dont use this in real life"
-
-#endif
-
+#if !defined __STDC_WANT_LIB_EXT1__
+#define __STDC_WANT_LIB_EXT1__ 1
+#endif /* !defined __STDC_WANT_LIB_EXT1__ */
+#define HAVE_BUILTIN___BUILTIN_ALLOCA_WITH_ALIGN 1
+#define HAVE_BUILTIN___BUILTIN_ASSUME_ALIGNED 1
+#define HAVE_BUILTIN___BUILTIN_BSWAP16 1
+#define HAVE_BUILTIN___BUILTIN_BSWAP32 1
+#define HAVE_BUILTIN___BUILTIN_BSWAP64 1
+#define HAVE_BUILTIN___BUILTIN_POPCOUNT 1
+#define HAVE_BUILTIN___BUILTIN_POPCOUNTLL 1
+#define HAVE_BUILTIN___BUILTIN_CLZ 1
+#define HAVE_BUILTIN___BUILTIN_CLZL 1
+#define HAVE_BUILTIN___BUILTIN_CLZLL 1
+#define HAVE_BUILTIN___BUILTIN_CTZ 1
+#define HAVE_BUILTIN___BUILTIN_CTZLL 1
+#define HAVE_BUILTIN___BUILTIN_ADD_OVERFLOW 1
+#define HAVE_BUILTIN___BUILTIN_SUB_OVERFLOW 1
+#define HAVE_BUILTIN___BUILTIN_MUL_OVERFLOW 1
+#define HAVE_BUILTIN___BUILTIN_MUL_OVERFLOW_P 1
+#define HAVE_BUILTIN___BUILTIN_CONSTANT_P 1
+#define HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR 1
+#define HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR_CONSTANT_P 1
+#define HAVE_BUILTIN___BUILTIN_TYPES_COMPATIBLE_P 1
+#define HAVE_BUILTIN___BUILTIN_TRAP 1
+#define ATAN2_INF_C99 1
+#define HAVE_CLOCK_GETRES 1
+#define HAVE_DECL_TZNAME 1
+#define HAVE_TZNAME 1
+#define HAVE_DAYLIGHT 1
+#define NEGATIVE_TIME_T 1
+#define RSHIFT(x,y) ((x)>>(int)(y))
+#define STACK_GROW_DIRECTION -1
+#define COROUTINE_H "coroutine/win64/Context.h"
+#define DLEXT_MAXLEN 3
+#define DLEXT ".so"
+#define LIBDIR_BASENAME "lib"
+#define EXECUTABLE_EXTS ".exe",".com",".cmd",".bat"
+#define HAVE__SETJMPEX 1
+#define RUBY_SETJMP(env) __builtin_setjmp((env))
+#define RUBY_LONGJMP(env,val) __builtin_longjmp((env),val)
+#define USE_MJIT 1
+#define LOAD_RELATIVE 1
+#define RUBY_PLATFORM "x64-mingw32"
 #endif /* INCLUDE_RUBY_CONFIG_H */

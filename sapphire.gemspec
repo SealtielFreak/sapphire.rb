@@ -4,16 +4,15 @@ Gem::Specification.new do |s|
     s.name        = 'sapphire'
     s.version     = Sapphire::VERSION
     s.summary     = 'Experimental game framework for Ruby'
-    s.description = 'Sapphire is a framework for game develop, power by SDL'
+    s.description = 'Sapphire is a framework for game develop, power by SFML'
     s.homepage    = 'https://github.com/sealtielfreak/sapphire.rb/'
     
     s.authors     = ['Sealtiel Valderrama']
     s.email       = 'SealtielFreak@yandex.com'
     s.license     = 'LGPL-2.1'
 
-    s.required_ruby_version = '>= 3.0.6'
+    s.required_ruby_version = '>=2.7.0'
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
-    s.add_development_dependency 'rice', '~> 11.2', '>= 11.2.2'
 
     s.files       = Dir.glob('ext/**/*.{rb,sh}') +
                     Dir.glob('ext/include/**/*.{h}') +

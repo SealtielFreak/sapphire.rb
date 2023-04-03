@@ -1,6 +1,6 @@
 require_relative 'lib/sapphire/version'
 
-Gem::Specification.new do |s|
+spec = Gem::Specification.new do |s|
     s.name        = 'sapphire'
     s.version     = Sapphire::VERSION
     s.summary     = 'Experimental game framework for Ruby'
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
     s.required_ruby_version = '>= 3.0'
     s.add_development_dependency 'rake', '~> 11.2', '>= 11.2.2'
+    s.platform = Gem::Platform::RUBY
 
     s.files       = Dir.glob('ext/**/*.{rb,sh}') +
                     Dir.glob('ext/include/**/*.{h}') +

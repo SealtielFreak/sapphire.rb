@@ -1,3 +1,4 @@
+require 'mkmf'
 require 'rake'
 require_relative 'lib/sapphire/version'
 
@@ -8,7 +9,7 @@ task :uninstall do
 end
 
 task :build do
-  system "gem build sapphire.gemspec"
+  system "gem build sapphire"
 end
 
 task :install do

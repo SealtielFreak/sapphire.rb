@@ -22,6 +22,11 @@ static VALUE New_rbWindow(int argc, VALUE *argv, VALUE klass) {
     return self;
 }
 
+/*
+ * Windows initializer.
+ * Params:
+ * +title+:: set title of Window
+ */
 static VALUE Initialize_rbWindow(int argc, VALUE *argv, VALUE self) {
     return self;
 }

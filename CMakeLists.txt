@@ -97,5 +97,5 @@ add_compile_definitions(SAPPHIRE_C_DEVELOP)
 include_directories(ext/src)
 include_directories(ext/include)
 
-add_library(sapphire STATIC ext/src/ext.c ext/src/window.c ext/include/klass/window.h ext/include/sdl.h ext/src/exceptions.c ext/include/exceptions.h)
+add_library(sapphire STATIC ext/src/ext.c ext/src/window.c ext/include/klass/window.h ext/include/sdl.h ext/src/exceptions.c ext/include/exceptions.h ext/src/event.c ext/include/klass/event.h)
 target_link_libraries(sapphire PRIVATE SDL2 SDL2_mixer SDL2_image SDL2_gfx SDL2_ttf Ruby)

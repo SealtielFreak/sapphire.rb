@@ -15,6 +15,16 @@ static VALUE rb_mExt;
  * Params:
  * +self+:: the object the function is called on
  */
+static void my_module_free(void *ptr){
+    printf("Finalize module...\n");
+    SDL_Quit();
+}
+
+/*
+ * This function is for SDL2 testing.
+ * Params:
+ * +self+:: the object the function is called on
+ */
 VALUE rb_init_sdl2_test(VALUE self) {
     if (SDL_WasInit(SDL_INIT_EVERYTHING) != 0) {
         printf("SDL2 was init everything\n");
@@ -45,12 +55,22 @@ VALUE rb_run_sdl2_test(VALUE self, VALUE rb_mode) {
 }
 
 void Init_ext(void) {
+    rb_mExt = rb_define_module("Sapphire");
+
+    if (SDL_WasInit(SDL_INIT_EVERYTHING) == 0) {
+        if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
+            printf("Failure init SDL!");
+        } else {
+            printf("Success init SDL!");
+        }
+    }
+
+    Init_window_klass(rb_mExt);
+
     rb_define_global_function("init_sdl2_test", (VALUE (*)(void)) rb_init_sdl2_test, 0);
     rb_define_global_function("run_sdl2_test", (VALUE (*)(void)) rb_run_sdl2_test, 1);
 
-    rb_mExt = rb_define_module("Sapphire");
-
-    Init_window_klass(rb_mExt);
+    rb_define_module_function(rb_mExt, "finalize", (VALUE (*)(void)) my_module_free, 0);
 
 }
 

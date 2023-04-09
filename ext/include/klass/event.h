@@ -6,7 +6,7 @@
 
 void Init_event_klass(VALUE rb_module);
 
-SDL_Window * get_event_object(VALUE self);
+SDL_Event * get_event_object(VALUE self);
 
 VALUE get_klass_event();
 

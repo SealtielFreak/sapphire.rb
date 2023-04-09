@@ -66,6 +66,7 @@ void Init_ext(void) {
     }
 
     Init_window_klass(rb_mExt);
+    Init_event_klass(rb_mExt);
 
     rb_define_global_function("init_sdl2_test", (VALUE (*)(void)) rb_init_sdl2_test, 0);
     rb_define_global_function("run_sdl2_test", (VALUE (*)(void)) rb_run_sdl2_test, 1);
